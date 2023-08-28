@@ -11,17 +11,19 @@ const displayPhones = (phones, isShowAll) => {
 
     // display show all
     const showAllContainer = document.getElementById('show-all-container');
-    if(phones.length > 12) {
+    if(phones.length > 12 && !isShowAll) {
         showAllContainer.classList.remove('hidden');
     }
     else{
         showAllContainer.classList.add('hidden');
     }
     // console.log(phones.length)
-    // console.log("isShowAll", isShowAll);
+    console.log("isShowAll", isShowAll);
     // display only first 12 phones if not show all
-    phones = phones.slice(0,12);
     console.log(phones);
+    if(!isShowAll){
+        phones = phones.slice(0, 12);
+    }
     
 
     // clear phoneContainer
