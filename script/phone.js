@@ -41,7 +41,7 @@ const displayPhones = (phones, isShowAll) => {
         <p>There are many variations of passages of available, but the majority have suffered</p>
         <h3 class="text-2xl font-bold">$999</h3>
         <div class="card-actions">
-        <button class="btn btn-primary">Show Details</button>
+        <button onclick = "handleShowDetails('${phone.slug}'); show_details_modal.showModal()" class="btn btn-primary">Show Details</button>
         </div>
         </div>
         `
@@ -49,6 +49,28 @@ const displayPhones = (phones, isShowAll) => {
     });
     // hide loading spinner
     toggleLoadingSpinner(false);
+}
+
+// handle show details click
+const handleShowDetails = async (id) => {
+    console.log(id);
+    // load data
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    const data = await res.json();
+    const phone = data.data;
+    console.log(phone);
+    showPhoneDetails(phone);
+
+}
+// Show details
+const showPhoneDetails = (phone) => {
+    const showDetailsContainer = document.getElementById('show-modal-container');
+    showDetailsContainer.innerHTML = `
+    <div class = "flex justify-center"><img src="${phone.image}" alt=""></div>
+    <p class = "text-center">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+    <p class = "text-center"><span class="text-xl font-medium">Storage: </span>${phone?.mainFeatures?.storage}</p>
+    `
+    show_details_modal.showModal();
 }
 
 // Handle search button click
