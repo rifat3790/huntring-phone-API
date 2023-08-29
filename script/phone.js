@@ -67,8 +67,13 @@ const showPhoneDetails = (phone) => {
     const showDetailsContainer = document.getElementById('show-modal-container');
     showDetailsContainer.innerHTML = `
     <div class = "flex justify-center"><img src="${phone.image}" alt=""></div>
-    <p class = "text-center">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-    <p class = "text-center"><span class="text-xl font-medium">Storage: </span>${phone?.mainFeatures?.storage}</p>
+    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+    <p><span class="text-xl font-medium">Storage: </span>${phone?.mainFeatures?.storage}</p>
+    <p"><span class="text-xl font-medium">Display Size: </span>${phone?.mainFeatures?.displaySize}</p>
+    <p"><span class="text-xl font-medium">GPS: </span>${phone?.others?.GPS}</p>
+    <div class = "flex justify-center mt-5">
+    <button class = "btn btn-primary">Close</button>
+    </div>
     `
     show_details_modal.showModal();
 }
